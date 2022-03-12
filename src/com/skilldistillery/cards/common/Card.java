@@ -19,8 +19,6 @@ public class Card {
 	}
 	
 	
-	
-	
 	@Override
 	public String toString() {
 		String output = rank + " of " + suit;
