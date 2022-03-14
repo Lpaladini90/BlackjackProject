@@ -12,18 +12,18 @@ public class Deck {
 		
 		
 		
-			List<Card> deck = new ArrayList<>(52);
+			List<Card> decks = new ArrayList<>(52);
 			
 		
 		
 		for (Suit suit : Suit.values()) {
 			for (Rank rank : Rank.values()) {
-				deck.add(new Card(rank, suit));
+				decks.add(new Card(rank, suit));
 
 			}
 
 		}
-		return deck;
+		return decks;
  
 		}
 
@@ -31,6 +31,11 @@ public class Deck {
 
 	public Deck() {
 		cards = createDecks();
+//		cards = createDecks();
+//		cards = createDecks();
+//		cards = createDecks();
+//		cards = createDecks();
+//		cards = createDecks();
 		
 
 	}
@@ -38,18 +43,27 @@ public class Deck {
 	public int checkDeckSize() {
 		int amountOfCardsLeft = cards.size();
 		return amountOfCardsLeft;
-		
+		 
 		}
 
 	public Card dealCard() {
 		return cards.remove(0);
 	}
-	
+	 
 	
 	public void shuffle() {
 		Collections.shuffle(cards);
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "Deck [cards=" + cards + "]";
+	}
+
+	
+	
 }
 
 
