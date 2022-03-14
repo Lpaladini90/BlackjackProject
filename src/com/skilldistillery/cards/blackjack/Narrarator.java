@@ -64,11 +64,11 @@ public class Narrarator {
 
 			boolean playAgain = true;
 			while (playAgain) {
-
-				if(deck.checkDeckSize() <= 21) {
-					deck = new Deck();
-					dealer.deckPrep(deck);
-				}
+//
+//				if(deck.checkDeckSize() <= 21) {
+//					deck = new Deck();
+//					dealer.deckPrep(deck);
+//				}
 				
 				List<Card> playerHand = new ArrayList<>();
 				playerHand.add(deck.dealCard());
@@ -118,7 +118,7 @@ public class Narrarator {
 			System.out.println("\t -                                               -");
 			System.out.println("\t -------------------------------------------------");
 			
-			System.out.println("\n\tYou're playing the big dogs, table minimum is $500,");
+			System.out.println("\n\tYou're playing the big dogs, table minimum is $1000,");
 			int bankRoll = 0;
 			if (bankRoll == 0) {
 				System.out.println("\n   You're too broke to play, go see Fat Tony if you need to borrow money.");
@@ -137,6 +137,7 @@ public class Narrarator {
 
 				System.out.println("\n\t\tPlace at least the minimum bet: $1000");
 				boolean playAgain2 = true;
+				
 				while (playAgain2) {
 
 					List<Card> playerHand = new ArrayList<>();
@@ -165,7 +166,7 @@ public class Narrarator {
 					System.out.println("\n\t\t    Dealer is delt: " + dealerHand.get(1));
 
 
-					bjWithMoney.playerTurn(playerHand, deck);
+					bjWithMoney.playerTurn(playerHand, deck, totalBetInHand);
 
 					System.out.println("\n\t\tDealer shows both cards: " + dealerHand);
 					
@@ -173,6 +174,7 @@ public class Narrarator {
 
 					int newBankRoll=bjWithMoney.determineWinner(dealerHand, playerHand,bankRoll, totalBetInHand);
 					bankRoll=newBankRoll; 
+					
 					System.out.println("\n\t\t\tBankroll is: " + bankRoll);
 					
 					if(bankRoll <1000) {
@@ -185,11 +187,11 @@ public class Narrarator {
 					}
 					else if (bankRoll > 1000) {
 					
-					System.out.println("\n\t\t\tDo you want to play again?");
+					System.out.println("\n\t\t\tDo you want to another hand?");
 					String userAnswer = sc.next();
 
-					if (userAnswer.equalsIgnoreCase("yes") || (userAnswer.equalsIgnoreCase("y"))) {
-						playAgain = true;
+					if (userAnswer.equalsIgnoreCase("yes")) {
+						playAgain2 = true;
 						
 					}else	{ 
 							System.out.println("\n\t\t    Thanks for playing,Good-Bye!");

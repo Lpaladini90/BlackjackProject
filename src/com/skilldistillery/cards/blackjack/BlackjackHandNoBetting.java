@@ -148,6 +148,7 @@ public class BlackjackHandNoBetting extends Hand {
 			} else if ((getHandValue(dealerHand) >= 17) && (getHandValue(dealerHand) <= 21)) {
 				System.out.println("\n\t\t\t        Dealer stays");
 				System.out.println("\n        -----------------------------------------------------");
+				System.out.println("\n\t\t\tCards in deck remaining: " + deck.checkDeckSize());
 				dealerHit = false;
 			}
 
@@ -168,35 +169,30 @@ public class BlackjackHandNoBetting extends Hand {
 			System.out.println("\t\t                                        ");
 			System.out.println("\t\t           Dealer Wins!");
 			System.out.println("\t\t****************************************");
-			checkDeck();
 		}
 		
 		else if (isBust(dealerHand)) {
 			System.out.println("\n\t\t**************************************");
 			System.out.println("\t\t            Dealer busts!");
 			System.out.println("\t\t**************************************");
-			checkDeck();
 		}
 		
 		else if (isBlackjack(playerHand) && (!isBlackjack(dealerHand))) {
 			System.out.println("\n\t*******************************************************");
 			System.out.println("\t     Player BlackJack! You get to keep your dinner.");
 			System.out.println("\t*********************************************************");
-			checkDeck();
 		}
 
 		else if (isBlackjack(dealerHand) && (isBlackjack(playerHand))) {
 			System.out.println("\n\t*******************************************************");
 			System.out.println("\t    Aw so close, no more chicken dinner. Push Hand");
 			System.out.println("\t*********************************************************");
-			checkDeck();
 		}
 
 		else if (isBlackjack(dealerHand) && (!isBlackjack(playerHand))) {
 			System.out.println("\n\t\t************************************");
 			System.out.println("\t\t          Dealer Blackjack!");
 			System.out.println("\t\t**************************************");
-			checkDeck();
 		}
 
 		else if ((getHandValue(dealerHand) >= 17) && (getHandValue(dealerHand) <= 21)
@@ -204,7 +200,6 @@ public class BlackjackHandNoBetting extends Hand {
 			System.out.println("\n\t\t************************************");
 			System.out.println("\t\t               Push");
 			System.out.println("\t\t**************************************");
-			checkDeck();
 		}
 		
 		else if ((getHandValue(dealerHand) >= 17) && (getHandValue(dealerHand) > getHandValue(playerHand))
@@ -212,8 +207,6 @@ public class BlackjackHandNoBetting extends Hand {
 			System.out.println("\n\t\t**************************************");			
 			System.out.println("\t\t             Dealer wins");
 			System.out.println("\t\t**************************************");			
-			
-			checkDeck();
 		}
 
 		else if ((getHandValue(dealerHand) >= 17) && (getHandValue(dealerHand) <= 21)
@@ -221,22 +214,15 @@ public class BlackjackHandNoBetting extends Hand {
 			System.out.println("\n\t\t************************************");
 			System.out.println("\t\t              You win!");
 			System.out.println("\t\t**************************************");
-			checkDeck();
 		}
 
 		else if ((getHandValue(dealerHand) < getHandValue(playerHand)) && (getHandValue(playerHand) <= 21)) {
 			System.out.println("\n\t\t**************************************");
 			System.out.println("\t\t              You win!");
 			System.out.println("\t\t**************************************");
-			checkDeck();
 
 		}
 
 	}
-	
-	
-	public void checkDeck() {
-		System.out.println("\n\t\t\tCards in deck remaining: " + deck.checkDeckSize());
-	}
 }
-// fix bug for when deck runs out of cards
+	

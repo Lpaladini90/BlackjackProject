@@ -59,7 +59,7 @@ public class BlackjackHandWBetting extends Hand {
 
 	}
 
-	public void playerTurn(List<Card> playerHand, Deck deck) {
+	public void playerTurn(List<Card> playerHand, Deck deck, int totalBetInHand) {
 		System.out.println("\n        -----------------------------------------------------");
 		System.out.println("\n\t\t    Your hand is: " + playerHand);
 		System.out.println("\t\t    Your hand value: " + getHandValue(playerHand));
@@ -81,6 +81,8 @@ public class BlackjackHandWBetting extends Hand {
 				System.out.println("\t\t     -     1. HIT            -");
 				System.out.println("\t\t     -                       -");
 				System.out.println("\t\t     -       2. STAY         -");
+				System.out.println("\t\t     -                       -");
+				System.out.println("\t\t     -  3. Double 9,10,11    -");
 				System.out.println("\t\t     -                       -");
 				System.out.println("\t\t     -------------------------");
 
@@ -114,6 +116,17 @@ public class BlackjackHandWBetting extends Hand {
 					System.out.println("\n        -----------------------------------------------------");
 					hitAgain = false;
 					break;
+					
+			 		
+//				case 3:
+//					if(getHandValue(playerHand)== 9 || getHandValue(playerHand)== 10 || getHandValue(playerHand)== 11 ) {
+//						bet.doubleBet(totalBetInHand);
+//						
+//					}
+//					hitAgain = true;
+//					break;
+//					
+//					
 
 				default:
 					System.out.println("\n\tInvalid input. Hit or stay only.");
@@ -150,6 +163,7 @@ public class BlackjackHandWBetting extends Hand {
 			} else if ((getHandValue(dealerHand) >= 17) && (getHandValue(dealerHand) <= 21)) {
 				System.out.println("\n\t\t\t        Dealer stays");
 				System.out.println("\n        -----------------------------------------------------");
+				System.out.println("\n\t\t\tCards in deck remaining: " + deck.checkDeckSize());
 				dealerHit = false;
 			}
 
@@ -157,7 +171,7 @@ public class BlackjackHandWBetting extends Hand {
 				dealerHit = false;
 			}
 		}
-
+		
 	}
 
 	public int determineWinner(List<Card> dealerHand, List<Card> playerHand, int bankRoll, int totalBetInHand) {
@@ -170,7 +184,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\t\t           Dealer Wins!");
 			System.out.println("\t\t   You lose: $" + totalBetInHand);
 			System.out.println("\t\t****************************************");
-			checkDeck();
 			return bankRoll;
 		}
 
@@ -179,7 +192,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\t\t            Dealer busts!");
 			System.out.println("\t\t      You win: $" + (totalBetInHand + (totalBetInHand*1.5)));
 			System.out.println("\t\t**************************************");
-			checkDeck();
 			return bet.winnerBlackjackBet(bankRoll, totalBetInHand);
 			
 		} 
@@ -189,7 +201,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\t\t            Dealer busts!");
 			System.out.println("\t\t      You win: $" + (totalBetInHand*2));
 			System.out.println("\t\t**************************************");
-			checkDeck();
 			return bet.winsBet(bankRoll, totalBetInHand);
 			
 		}
@@ -199,7 +210,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\t     Player BlackJack! You get to keep your dinner.");
 			System.out.println("\t     You win: $" + (totalBetInHand + (totalBetInHand*1.5)));
 			System.out.println("\t*********************************************************");
-			checkDeck();
 			return bet.winnerBlackjackBet(bankRoll, totalBetInHand);
 			
 		}
@@ -209,7 +219,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\t    Aw so close, no more chicken dinner. Push Hand");
 			System.out.println("\t    You lose: $" + totalBetInHand);
 			System.out.println("\t*********************************************************");
-			checkDeck();
 			return bankRoll;
 		}
 
@@ -218,7 +227,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\t\t          Dealer Blackjack!");
 			System.out.println("\t\t          You lose: $" + totalBetInHand);
 			System.out.println("\t\t**************************************");
-			checkDeck();
 			return bankRoll;
 		}
 
@@ -228,7 +236,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\t\t               Push");
 			System.out.println("\t\t          Your bet of: $" + totalBetInHand + " is returned");
 			System.out.println("\t\t**************************************");
-			checkDeck();
 			return bet.pushBet(bankRoll, totalBetInHand);
 			
 		}
@@ -239,7 +246,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\t\t             Dealer wins");
 			System.out.println("\t\t           You lose: $" + totalBetInHand);
 			System.out.println("\t\t**************************************");
-			checkDeck();
 			return bankRoll;
 		}
 
@@ -248,7 +254,6 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\n\t\t************************************");
 			System.out.println("\t\t           You win: $" + (totalBetInHand*2));
 			System.out.println("\t\t**************************************");
-			checkDeck();
 			return bet.winsBet(bankRoll, totalBetInHand);
 			
 		}
@@ -257,16 +262,11 @@ public class BlackjackHandWBetting extends Hand {
 			System.out.println("\n\t\t**************************************");
 			System.out.println("\t\t          You win: $" + (totalBetInHand*2));
 			System.out.println("\t\t**************************************");
-			checkDeck();
 			return bet.winsBet(bankRoll, totalBetInHand);
 			
 		}
 		return bankRoll;
 
-	}
-
-	public void checkDeck() {
-		System.out.println("\n\t\t\tCards in deck remaining: " + deck.checkDeckSize());
 	}
 
 }

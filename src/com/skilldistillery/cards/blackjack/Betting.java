@@ -35,18 +35,19 @@ public class Betting {
 	}
 
 	public int winnerBlackjackBet(int bankRoll, int totalBetInHand) {
-
+		
+		
 		int totalHandWinnings = ((int) (totalBetInHand * 1.5));
 		bankRoll = totalBetInHand + totalHandWinnings;
 		return bankRoll;
 
 	}
 
-//	public int loseBet(int totalBetInHand) { 
-//		
-//		totalBetInHand = 0;
-//		return totalBetInHand;
-//	}
+	public int doubleBet(int totalBetInHand) { 
+		
+		totalBetInHand*=2;
+		return totalBetInHand;
+	}
 
 	public int pushBet(int bankRoll, int totalBetInHand) {
 		bankRoll += totalBetInHand;
