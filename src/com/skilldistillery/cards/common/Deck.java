@@ -59,7 +59,8 @@ public class Deck {
 
 	@Override
 	public String toString() {
-		return "Deck [cards=" + cards + "]";
+		String output = "Cards: " + cards;
+		return output;
 	}
 
 	
